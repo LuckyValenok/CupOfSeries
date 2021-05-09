@@ -1,0 +1,30 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+       <form class="registration" method="post">
+        {% csrf_token %}
+        <h1>Регистрация</h1>
+
+        <label for="id_username" class="pure-material-textfield-outlined">
+            <input name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150"
+                   placeholder=" " type="text" required id="id_username">
+            <span>Никнейм</span>
+        </label>
+
+        <label for="id_password1" class="pure-material-textfield-outlined">
+            <input name="password1" autocomplete="new-password" required id="id_password1" placeholder=" "
+                   type="password">
+            <span>Пароль</span>
+        </label>
+
+        <label for="id_password2" class="pure-material-textfield-outlined">
+            <input name="password2" autocomplete="new-password" required id="id_password2" placeholder=" "
+                   type="password">
+            <span>Повторите пароль</span>
+        </label>
+
+        <button class="pure-material-button-contained" type="submit">Зарегистрироваться</button>
+    </form>
+{% endblock %}

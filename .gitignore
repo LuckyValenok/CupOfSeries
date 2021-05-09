@@ -1,0 +1,6 @@
+__init__.py
+/venv
+db.sqlite3
+/.idea
+*.cpython-38.pyc
+/static
