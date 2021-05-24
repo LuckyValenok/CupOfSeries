@@ -1,3 +1,21 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="small-header anim" style="--delay: .3s">Последние</div>
+    <div class="videos">
+        <div class="video anim" style="--delay: .4s">
+            <div class="video-time">45 мин</div>
+            <a href="{% url 'template' %}">
+                <div class="video-wrapper">
+                    <img src="https://avatars.mds.yandex.net/get-zen_doc/3323369/pub_5ffb51b2af142f0b17f648bf_5ffb55ecfe4e686f6aca56cb/scale_1200"
+                         alt=""/>
+                </div>
+            </a>
+            <div class="video-name">Как избежать наказания за убийство</div>
+            <div class="video-details">1 сезон 1 серия</div>
+            <div class="video-view">1 просмотр<span class="seperate video-seperate"></span>1 неделю назад</div>
+        </div>
+    </div>
+{% endblock %}

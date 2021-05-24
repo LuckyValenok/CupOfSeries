@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Друзья{% endblock %}
+
+{% block content %}
+    {% load friendshiptags %}
+    <form class="registration">
+        <h1>Ваши друзья</h1>
+
+        <label for="id_username" class="pure-material-textfield-outlined">
+            <input name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150"
+                   placeholder=" " type="text" required id="id_username">
+            <span>Никнейм</span>
+        </label>
+
+        <button class="pure-material-button-contained" type="submit">Добавить</button>
+        {% get_by_name friendship_context_object_name as var %}
+        {% friends var %}
+    </form>
+{% endblock %}

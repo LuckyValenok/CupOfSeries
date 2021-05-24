@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load extras %}
+
+{% block title %}Диалоги{% endblock %}
+
+{% block content %}
+    <div class="dialogs">
+        {% load tz %}
+        {% if chats.count == 0 %}
+            <h1>Вам необходимо начать общаться с кем-то</h1>
+        {% endif %}
+        {% for chat in chats %}
+            {% if chat.message_set.count != 0 %}
+                {% with last_message=chat.message_set.last %}
+                    {% get_companion user chat as companion %}
+                    <a href="{{ chat.get_absolute_url }}">
+                        <img class="user-img"
+                             src="{% if companion.UserProfile.avatar != null %}
+                        {{ companion.UserProfile.avatar }}
+                        {% else %}
+                        {% static 'main/img/avatar.png' %}
+                        {% endif %}" alt=""/>
+                        <strong class="user-name">{{ companion.username }}</strong>
+                        <small style="margin: 25%">{% if companion != last_message.author %}Вы: {% endif %}{{ last_message.message|truncatechars_html:"200"|safe|striptags }}</small>
+                        <small>{{ last_message.pub_date|utc }}</small>
+                    </a>
+                {% endwith %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
