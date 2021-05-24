@@ -2,9 +2,10 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-
+from django.contrib.auth.models import User as user_model
 from .forms import MessageForm
 from .models import Chat
+from friendship.models import Friend
 
 
 class DialogsView(View):
@@ -54,4 +55,5 @@ class CreateDialogView(View):
             chat.members.add(user_id)
         else:
             chat = chats.first()
-        return redirect(reverse('chats', kwargs={'chat_id': chat.id}))
+        if Friend.objects.are_friends(request.user, user_model.objects.get(id=user_id)):
+            return redirect(reverse('chats', kwargs={'chat_id': chat.id}))

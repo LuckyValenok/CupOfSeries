@@ -16,7 +16,11 @@ class ContentView(View):
         except Content.DoesNotExist:
             content = None
 
-        return render(request, 'contents/template.html', {'content': content})
+        if content is not None:
+            content.views += 1
+            content.save()
+
+        return render(request, 'contents/content.html', {'content': content})
 
 
 def terms(request):

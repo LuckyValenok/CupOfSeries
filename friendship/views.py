@@ -4,15 +4,7 @@ from django.views import View
 
 from .forms import FriendForm
 from .models import Friend
-
-try:
-    from django.contrib.auth import get_user_model
-
-    user_model = get_user_model()
-except ImportError:
-    from django.contrib.auth.models import User
-
-    user_model = User
+from django.contrib.auth.models import User as user_model
 
 
 class FriendsView(View):

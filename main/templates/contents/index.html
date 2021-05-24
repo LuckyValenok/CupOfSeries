@@ -12,7 +12,7 @@
         <div class="videos">
             <div class="video anim" style="--delay: .4s">
                 <div class="video-time">{{ content.duration }} мин</div>
-                <a href="{% url 'template' %}">
+                <a href="{% url 'content' content.pk %}">
                     <div class="video-wrapper">
                         <img src="{{ content.cover }}"
                              alt=""/>

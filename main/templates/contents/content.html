@@ -1,0 +1,57 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ content.name }}{% endblock %}
+
+{% block head %}
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <div class="stream-area">
+        <div class="video-stream">
+            <video
+                    id="my-video"
+                    class="video-js"
+                    controls
+                    preload="auto"
+                    poster="{{ content.cover }}"
+                    data-setup="{}"
+            >
+                <source src="{{ content.path }}" type="video/mp4"/>
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank"
+                    >supports HTML5 video</a>
+                </p>
+            </video>
+            <div class="video-detail">
+                <div class="video-content">
+                    <div class="video-p-title anim" style="--delay: .2s">{{ content.name }} <strong>{{ content.season }}
+                        сезон {{ content.series }} серия</strong></div>
+                    <div class="video-p-subtitle anim" style="--delay: .3s">
+                        {{ content.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-stream">
+            <div class="chat">
+                <div class="chat-header anim">Комментарии</div>
+                <div class="message-container">
+                    <div class="message anim" style="--delay: .1s">
+                        <div class="msg-wrapper">
+                            <div class="msg__name video-p-name">Человек Человек</div>
+                            <div class="msg__content video-p-sub">Lorem ipsum clor sit, ame conse quae debitis</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-footer anim" style="--delay: .1s">
+                    <input type="text" placeholder="Введите сообщение">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+{% endblock %}
