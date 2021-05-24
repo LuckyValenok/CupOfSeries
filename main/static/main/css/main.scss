@@ -228,7 +228,7 @@ body {
 
 .search-bar {
   height: 34px;
-  display: flex;
+  display: flow;
   width: 100%;
   max-width: 450px;
 
@@ -611,7 +611,6 @@ video {
   top: 0;
   background-color: #252836;
   left: 0;
-  z-index: 1;
   border-bottom: 1px solid var(--border-color);
 
   svg {
