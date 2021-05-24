@@ -5,19 +5,17 @@
 {% block content %}
     {% if not chat %}
         <div class="panel panel-body">
-            It's impossible to start a conversation.No user is found or you do not have access to this conversation.
+            It's impossible to start a conversation. No user is found or you do not have access to this conversation.
         </div>
     {% else %}
         {% load tz %}
-        {% if chat %}
-            <div id="messages" class="panel">
-                <div id="innerMessages">
-                    {% for message in chat.message_set.all %}
-                        {% include 'users/message.html' with message_item=message %}
-                    {% endfor %}
-                </div>
+        <div id="messages" class="panel">
+            <div id="innerMessages">
+                {% for message in chat.message_set.all %}
+                    {% include 'users/message.html' with message_item=message %}
+                {% endfor %}
             </div>
-        {% endif %}
+        </div>
         <div id="message_form">
             <form id="message-form" class="panel panel-body" method="post">
                 {% load bootstrap3 %}
@@ -25,7 +23,8 @@
                 {% bootstrap_form form %}
                 <button type="submit" class="btn btn-default btn-sm"
                         onclick="return ETextEditor.validateForm('message-form')"><span
-                        class="ico ico-comment"></span>Отправить</button>
+                        class="ico ico-comment"></span>Отправить
+                </button>
             </form>
         </div>
     {% endif %}
