@@ -4,9 +4,10 @@
 
 {% block content %}
     {% load friendshiptags %}
-    <form class="registration">
+    <form class="registration" method="post">
         <h1>Ваши друзья</h1>
 
+        {% csrf_token %}
         <label for="id_username" class="pure-material-textfield-outlined">
             <input name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150"
                    placeholder=" " type="text" required id="id_username">
