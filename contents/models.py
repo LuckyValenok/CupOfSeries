@@ -11,6 +11,7 @@ class Content(models.Model):
     views = models.IntegerField(_('Content views'), default=0)
     path = models.URLField(_('Content path'))
     cover = models.URLField(_('Content background'))
+    duration = models.IntegerField(_('Content duration'), default=1)
 
     def get_absolute_url(self):
         return '/view/%i/' % self.pk
