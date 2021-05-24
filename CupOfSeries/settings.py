@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'accounts',
     'chats',
     'contents',
+    'friendship',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
-    'friendship',
     'bootstrap3',
 ]
 
