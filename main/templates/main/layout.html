@@ -78,6 +78,9 @@
                         {% endif %}" alt="">
                         <div class="user-name">{{ request.user.username }}</div>
                         <div class="dropdown-content">
+                            {% if request.user.is_superuser %}
+                                <a href="{% url 'admin:index' %}">Админ-панель</a>
+                            {% endif %}
                             <a href="#">Настройки</a>
                             <a href="{% url 'logout' %}?next=/">Выйти</a>
                         </div>
