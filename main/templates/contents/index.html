@@ -6,7 +6,7 @@
     {% load tz %}
     <div class="small-header anim" style="--delay: .3s">Последние</div>
     {% if contents.count == 0 %}
-        <div class="small-header anim" style="--delay: .3s">Тут пока пусто</div>
+        <h3 class="anim" style="--delay: .3s">Тут пока пусто</h3>
     {% endif %}
     {% for content in contents %}
         <div class="videos">

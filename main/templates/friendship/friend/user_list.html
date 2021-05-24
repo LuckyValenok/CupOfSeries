@@ -15,7 +15,37 @@
         </label>
 
         <button class="pure-material-button-contained" type="submit">Добавить</button>
-        {% get_by_name friendship_context_object_name as var %}
-        {% friends var %}
+        {% for friend in friends %}
+            <ul>
+                <li>
+                    {{ friend }} | <a href="{% url 'create_dialog' friend.id %}">Написать сообщение</a> | <a
+                        href="{% url 'friendship_remove' friend.username %}">Удалить из друзей</a>
+                </li>
+            </ul>
+        {% endfor %}
+        {% if requests %}
+            <hr align="center" width="90%" size="2" color="#ffffff"/>
+            <h1>Заявки в друзья</h1>
+            {% for request in requests %}
+                <ul>
+                    <li>
+                        {{ request.from_user }} | <a
+                            href="{% url 'friendship_accept' request.pk %}">Принять</a> | <a
+                            href="{% url 'friendship_reject' request.pk %}">Отклонить</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        {% endif %}
+        {% if send_requests %}
+            <hr align="center" width="90%" size="2" color="#ffffff"/>
+            <h1>Отправленные заявки</h1>
+            {% for request in send_requests %}
+                <ul>
+                    <li>
+                        {{ request.to_user }} | <a href="{% url 'friendship_reject' request.pk %}">Отклонить</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        {% endif %}
     </form>
 {% endblock %}

@@ -349,7 +349,6 @@ class FriendshipManager(models.Manager):
                     Q(to_user=to_user, from_user=from_user)
                     | Q(to_user=from_user, from_user=to_user)
                 )
-                    .distinct()
                     .all()
             )
 

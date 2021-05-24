@@ -17,3 +17,15 @@ class ContentView(View):
             content = None
 
         return render(request, 'contents/template.html', {'content': content})
+
+
+def terms(request):
+    return render(request, 'contents/terms.html')
+
+
+def abuse(request):
+    return render(request, 'contents/abuse.html')
+
+
+def contacts(request):
+    return render(request, 'contents/contacts.html')

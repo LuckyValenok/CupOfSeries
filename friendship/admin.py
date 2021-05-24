@@ -14,5 +14,6 @@ class FriendshipRequestAdmin(admin.ModelAdmin):
     model = FriendshipRequest
     raw_id_fields = ("from_user", "to_user")
 
+
 admin.site.register(Friend, FriendAdmin)
 admin.site.register(FriendshipRequest, FriendshipRequestAdmin)

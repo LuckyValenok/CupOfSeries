@@ -1,18 +1,18 @@
 from django.conf.urls import url
+from django.contrib.auth.decorators import login_required
+
 from friendship.views import (
     friendship_accept,
     friendship_cancel,
     friendship_reject,
-    friendship_request_list,
-    friendship_request_list_rejected,
-    friendship_requests_detail,
+    friendship_remove,
     FriendsView,
 )
 
 urlpatterns = [
     url(
-        regex=r"^friends/(?P<username>[\w-]+)/$",
-        view=FriendsView.as_view(),
+        regex=r"^friends/$",
+        view=login_required(FriendsView.as_view()),
         name="friendship_view_friends",
     ),
     url(
@@ -31,18 +31,8 @@ urlpatterns = [
         name="friendship_cancel",
     ),
     url(
-        regex=r"^friend/requests/$",
-        view=friendship_request_list,
-        name="friendship_request_list",
-    ),
-    url(
-        regex=r"^friend/requests/rejected/$",
-        view=friendship_request_list_rejected,
-        name="friendship_requests_rejected",
-    ),
-    url(
-        regex=r"^friend/request/(?P<friendship_request_id>\d+)/$",
-        view=friendship_requests_detail,
-        name="friendship_requests_detail",
-    ),
+        regex=r"^friend/remove/(?P<username>[\w-]+)/$",
+        view=friendship_remove,
+        name="friendship_remove",
+    )
 ]
