@@ -12,6 +12,7 @@ class Content(models.Model):
     path = models.URLField(_('Content path'))
     cover = models.URLField(_('Content background'))
     duration = models.IntegerField(_('Content duration'), default=1)
+    series_name = models.TextField(_('Content series name'), default='')
     description = models.TextField(_('Content description'), default='')
 
     def get_absolute_url(self):

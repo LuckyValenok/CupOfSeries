@@ -5,11 +5,11 @@
 {% block content %}
     {% load tz %}
     <div class="small-header anim" style="--delay: .3s">Последние</div>
-    {% if contents.count == 0 %}
+    {% if not contents %}
         <h3 class="anim" style="--delay: .3s">Тут пока пусто</h3>
     {% endif %}
-    {% for content in contents %}
-        <div class="videos">
+    <div class="videos">
+        {% for content in contents %}
             <div class="video anim" style="--delay: .4s">
                 <div class="video-time">{{ content.duration }} мин</div>
                 <a href="{% url 'content' content.pk %}">
@@ -19,10 +19,10 @@
                     </div>
                 </a>
                 <div class="video-name">{{ content.name }}</div>
-                <div class="video-details">{{ content.season }} сезон {{ content.series }} серия</div>
+                <div class="video-details">{{ content.season }} сезон {{ content.series }} серия {{ content.series_name }}</div>
                 <div class="video-view">{{ content.views }} просмотр<span
                         class="seperate video-seperate"></span>{{ content.pub_date }}</div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}
